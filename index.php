@@ -11,8 +11,12 @@
 </head>
 
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 require_once("Class/DB.class.php");
 require_once("Shared.php");
+//echo $_SERVER['SCRIPT_FILENAME'];
 //$Cur_Meeting = Current_Meeting($meeting);
 $Cur_Meeting = "SUN_IS_2";
 if (isset($_SESSION['done_attendance']) && $_SESSION['done_attendance']) {
@@ -35,16 +39,18 @@ $Password = $MeetingData[1];
 //echo $Cur_Meeting;
 //$Database = new DB();
 //$Database->CheckDB_Connection();
+$username_input = NULL;
+$password_input = NULL;
 if (isset($_POST['check_btn'])) {
     $username_input = $_POST['username'];
     $password_input = $_POST['password'];
-    if ($username == $username && $password_input == $Password) {
+    if ($username == $username_input && $password_input == $Password) {
         $_SESSION['is_auth'] = 1;
-        header("location:Attendance.php");
+        header("Location:Attendance.php");
         exit(0);
-    } else if ($password_input != $Password) {
-    PrintMessage("Password Is Wrong","Danger");
-    } else echo "username is wrong";
+    } else if ($username_input != $username) {
+    PrintMessage("Username Is Wrong","Danger");
+    } else if($password_input != $Password) PrintMessage("Password Is Wrong","Danger");
 }
 ?>
 
@@ -55,11 +61,11 @@ if (isset($_POST['check_btn'])) {
         <form method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input required type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input required type="text" name="username" placeholder="Enter The Username" value="<?php echo $username_input ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input required type="password" name="password" class="form-control" id="exampleInputPassword1">
+                <input required type="password" placeholder="Enter The Password" value="<?php echo $password_input ?>"  name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary" name="check_btn">LogIn</button>
         </form>

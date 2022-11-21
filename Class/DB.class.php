@@ -3,7 +3,7 @@
 class DB
 {
     private const DB_NAME = "cic_attend" ; 
-    private const DB_PASS = "" ;
+    private const DB_PASS = "Gingpariston241$$" ;
     private const DB_USER = "root" ;
     private const DB_HOST = "localhost" ;
     private $Con;

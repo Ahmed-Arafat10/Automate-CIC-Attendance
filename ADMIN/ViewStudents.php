@@ -21,7 +21,7 @@ if (!isset($_SESSION['is_auth_admin'])  || !$_SESSION['is_auth_admin']) {
 }
 
 $Cur_Meeting = Current_Meeting($meeting);
-$Cur_Meeting = "SUN_IS_2";
+//$Cur_Meeting = "SUN_IS_2";
 $_SESSION['CUR_MEETING'] = $Cur_Meeting;
 $MeetingData = GetCurmeetingData($Cur_Meeting);
 $MeetingID = $MeetingData[0];

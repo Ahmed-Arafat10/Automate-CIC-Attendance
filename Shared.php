@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+require_once("Class/DB.class.php");
 date_default_timezone_set("Africa/Cairo");
 session_start();
 $meeting = array(
@@ -24,19 +28,19 @@ function Current_Meeting($meeting)
     //echo $d . $h . $am_pm;
     for ($i = 0; $i < count($meeting); $i++) {
         $cur_meeting = explode("_", $meeting[$i]);
-        $cur_dat = $cur_meeting[0];
+        $cur_day = $cur_meeting[0];
         $start_h = $cur_meeting[2];
         $end_h = ($start_h + 2);
         if ($end_h > 12) $end_h = $end_h % 12;
         //echo $end_h . "<br>";
+	//echo $start_h;
         $cur_ampm = "am";
-        if ($start_h >= "12") $cur_ampm = "pm";
+        if ($start_h == 12 || $start_h == 2) $cur_ampm = "pm";
         //echo $cur_ampm;
-        if ($d == $cur_dat && $h >= $start_h && $h <= $end_h && $cur_ampm == $am_pm) return $meeting[$i];
+        if ($d == $cur_day && $h >= $start_h && $h <= $end_h && $cur_ampm == $am_pm) return $meeting[$i];
     }
     return -1;
 }
-require_once("Class/DB.class.php");
 function GetCurmeetingData($Cur_Meeting)
 {
     $res = array();

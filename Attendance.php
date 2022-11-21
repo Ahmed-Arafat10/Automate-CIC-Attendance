@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,15 +11,21 @@
 </head>
 
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require_once("Class/DB.class.php");
 require_once("Class/Student.class.php");
 require_once("Shared.php");
-
+//echo $_SERVER['SCRIPT_FILENAME'];
+$Cur_Meeting = isset($_SESSION['CUR_MEETING'])?$_SESSION['CUR_MEETING']:NULL;
 if (!isset($_SESSION['is_auth'])  || !$_SESSION['is_auth']) {
-    PrintMessage("Not Authorized" . $Cur_Meeting,"Danger");
+    PrintMessage("Not Authorized In " . $Cur_Meeting,"Danger");
     exit(0);
+
 }
-$Cur_Meeting = $_SESSION['CUR_MEETING'];
+
 //echo $Cur_Meeting;
 
 if (isset($_COOKIE["$Cur_Meeting"])) {
@@ -36,7 +41,7 @@ if (isset($_POST['add_attendance'])) {
     if (!$CheckError) {
         setcookie($Cur_Meeting, 1, time() + 2 * 60 * 60);
         $_SESSION['done_attendance'] = 1;
-        header("location:index.php");
+        header("Location:index.php");
     } else {
         echo "Something went wrong, please try again";
     }
