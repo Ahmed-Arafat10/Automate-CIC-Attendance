@@ -7,9 +7,9 @@ date_default_timezone_set("Africa/Cairo");
 session_start();
 $meeting = array(
     "SUN_PROG3_8",
-    "SUN_IS_10_12",
-    "SUN_IS_12_2",
-    "SUN_IS_2_2",
+    "SUN_IS_10",
+    "SUN_IS_12",
+    "SUN_IS_2",
     "MON_OS2_10",
     "MON_IS_12",
     "MON_STRAT_2",
@@ -24,20 +24,20 @@ function Current_Meeting($meeting)
     $d = date("D");
     $d = strtoupper($d);
     $h = date("g");
-    $am_pm = date("a");
+   //$h = 11; 
+$am_pm = date("a");
     //echo $d . $h . $am_pm;
     for ($i = 0; $i < count($meeting); $i++) {
         $cur_meeting = explode("_", $meeting[$i]);
         $cur_day = $cur_meeting[0];
         $start_h = $cur_meeting[2];
         $end_h = ($start_h + 2);
-        if ($end_h > 12) $end_h = $end_h % 12;
-        //echo $end_h . "<br>";
-	//echo $start_h;
+        //if ($end_h > 12) $end_h = $end_h % 12;
+        //echo $end_h . " ". $start_h ;
         $cur_ampm = "am";
-        if ($start_h == 12 || $start_h == 2) $cur_ampm = "pm";
-        //echo $cur_ampm;
-        if ($d == $cur_day && $h >= $start_h && $h <= $end_h && $cur_ampm == $am_pm) return $meeting[$i];
+        if ($start_h == 12 || $start_h <= 3) $cur_ampm = "pm";
+        //echo " " . $cur_ampm . "<br>";
+        if ($d == $cur_day && ($h >= $start_h || $h == 1) && $h <= $end_h && $cur_ampm == $am_pm) return $meeting[$i];
     }
     return -1;
 }

@@ -17,8 +17,8 @@ error_reporting(E_ALL);
 require_once("Class/DB.class.php");
 require_once("Shared.php");
 //echo $_SERVER['SCRIPT_FILENAME'];
-//$Cur_Meeting = Current_Meeting($meeting);
-$Cur_Meeting = "SUN_IS_2";
+$Cur_Meeting = Current_Meeting($meeting);
+//$Cur_Meeting = "SUN_IS_2";
 if (isset($_SESSION['done_attendance']) && $_SESSION['done_attendance']) {
     PrintMessage("Congrats, You're An Attendee Now :)","Green");
 }
