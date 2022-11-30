@@ -16,15 +16,16 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 require_once("Class/DB.class.php");
 require_once("Shared.php");
+//echo exec('getmac');
 //echo $_SERVER['SCRIPT_FILENAME'];
-$Cur_Meeting = Current_Meeting($meeting);
-//$Cur_Meeting = "SUN_IS_2";
+//$Cur_Meeting = Current_Meeting($meeting);
+$Cur_Meeting = "SUN_IS_2";
 if (isset($_SESSION['done_attendance']) && $_SESSION['done_attendance']) {
     PrintMessage("Congrats, You're An Attendee Now :)","Green");
 }
 $_SESSION['done_attendance'] = 0;
 if ($Cur_Meeting == -1) {
-    PrintMessage("No Lab/Tutorial With Ahmed Arafat At This Time, Mtsthbl4","Danger");
+    PrintMessage("No Lab/Tutorial With Ahmed Arafat At This Time","Danger");
     exit(0);
 }
 $_SESSION['is_auth'] = 0;

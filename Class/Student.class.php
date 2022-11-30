@@ -13,9 +13,10 @@ class Student
 
     public function AddAttendance($name,$student_id,$meeing_id,$date)
     {
-        $Insert = "INSERT INTO `attendance` VALUES(NULL,?,?,?,?)";
+        $Insert = "INSERT INTO `attendance` VALUES(NULL,?,?,?,?,?)";
         $Query = $this->Connect->prepare($Insert);
-        $Query->bind_param("siis",$name,$student_id,$meeing_id,$date);
+        $IP_Add = $_SERVER['REMOTE_ADDR'];
+        $Query->bind_param("siiss",$name,$student_id,$meeing_id,$date,$IP_Add);
         $CheckError = $Query->execute();
         return $CheckError ? 0 : 1;
     }

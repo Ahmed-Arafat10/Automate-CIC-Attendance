@@ -37,7 +37,7 @@ if (isset($_POST['add_attendance'])) {
     $student_name = $_POST['student_name'];
     $student_id = $_POST['student_id'];
     $student = new Student();
-    $CheckError = $student->AddAttendance($student_name, $student_id, $_SESSION['MeetingID'], date("Y-m-d H:i:s"));
+    $CheckError = $student->AddAttendance($student_name, $student_id, $_SESSION['MeetingID'], date("Y-m-d h:i:s"));
     if (!$CheckError) {
         setcookie($Cur_Meeting, 1, time() + 2 * 60 * 60);
         $_SESSION['done_attendance'] = 1;
