@@ -9,7 +9,7 @@ The problem here is that:
  - Some students can write the name of their friends who are not attending 
  - Some students hand writing is not so good resulting in confusion while reading their IDs and/or Names
  - It is time-consuming process
- - Cumulating many papers each week that harms the environment (paper = wood)
+ - This process Cumulating more than 10 `A4` papers each week that pollute the environment (More Paper = More Wood)
 
 ### The Project is Hosted on `AWS EC2` with `SSL` certificate & `Domain`
 
