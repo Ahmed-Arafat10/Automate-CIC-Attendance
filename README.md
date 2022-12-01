@@ -11,6 +11,8 @@ The problem here is that:
  - It is time-consuming process
  - Cumulating many papers each week that harms the environment (paper = wood)
 
+### The Project is Hosted on `AWS EC2` with `SSL` certificate & `Domain`
+
 ### How to use it ?
 - Open the following link in your browser
 ````
