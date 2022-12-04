@@ -34,7 +34,7 @@ https//khuh.ml/CIC_ATTEND
 
 #### At the end of each semester, to assign grades for each student depending on their attendance
 #### All I have to do is to execute the following `SQL` query
-````
+````sql
 SELECT Student_ID , Student_Name , COUNT(Student_ID) 
 from attendance 
 where Meeting_ID in (SELECT ID FROM meetings where Meeting_Name LIKE '%IS%') 
