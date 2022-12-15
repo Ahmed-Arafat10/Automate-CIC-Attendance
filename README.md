@@ -44,3 +44,7 @@ ORDER BY Student_ID ASC;
 > All I have to do is to change `'%IS%'` to code of course I teach, that's it
 
 - Then exporting the result of above query to `Excel` file, then using `Vlookup` built-in function I can assign number of Labs/Tutorials attended by specific student next to his record 
+````excel
+=IFERROR(VLOOKUP([@ID],'WorkSheetName'!sql,2,0),0)
+=IFERROR(VLOOKUP(StudentID,MySQLResultExcelTable,2,0),0)
+````
